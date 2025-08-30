@@ -36,40 +36,127 @@ const SuccessStoriesSection = () => {
       viewport={{ once: true }}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-foreground mb-4">Candidate Success Stories</h2>
-          <p className="text-xl text-muted-foreground">Real success stories from our candidates worldwide</p>
-        </div>
+        <motion.div 
+          className="text-center mb-12"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+          viewport={{ once: true, margin: "-50px" }}
+        >
+          <motion.h2 
+            className="text-4xl font-bold text-foreground mb-4"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+            viewport={{ once: true }}
+          >
+            Candidate Success Stories
+          </motion.h2>
+          <motion.p 
+            className="text-xl text-muted-foreground"
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.5, ease: "easeOut" }}
+            viewport={{ once: true }}
+          >
+            Real success stories from our candidates worldwide
+          </motion.p>
+        </motion.div>
         
         <div className="grid md:grid-cols-3 gap-8">
           {successStories.map((story, index) => (
-            <Card key={index} className="hover-lift h-full">
-              <CardHeader>
-                <div className="flex items-center gap-4 mb-4">
-                  <img 
-                    src={story.image} 
-                    alt={story.name}
-                    className="w-12 h-12 rounded-full object-cover"
-                    loading="lazy"
-                  />
-                  <div>
-                    <CardTitle className="text-lg">{story.name}</CardTitle>
-                    <CardDescription className="text-sm">{story.role}</CardDescription>
-                  </div>
-                </div>
-                <blockquote className="text-muted-foreground italic">
-                  "{story.quote}"
-                </blockquote>
-              </CardHeader>
-              <CardContent>
-                <div className="flex items-center justify-between">
-                  <span className="text-sm text-muted-foreground">@ {story.employer}</span>
-                  <Button variant="ghost" size="sm">
-                    See full case study
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 30, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ 
+                duration: 0.5, 
+                delay: 0.6 + index * 0.15, 
+                ease: "easeOut" 
+              }}
+              viewport={{ once: true, margin: "-50px" }}
+              whileHover={{ 
+                y: -8, 
+                scale: 1.02,
+                transition: { duration: 0.3 }
+              }}
+            >
+              <Card className="hover-lift h-full">
+                <CardHeader>
+                  <motion.div 
+                    className="flex items-center gap-4 mb-4"
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ 
+                      duration: 0.5, 
+                      delay: 0.8 + index * 0.15 
+                    }}
+                    viewport={{ once: true }}
+                  >
+                    <motion.img 
+                      src={story.image} 
+                      alt={story.name}
+                      className="w-12 h-12 rounded-full object-cover"
+                      loading="lazy"
+                      initial={{ opacity: 0, scale: 0.5 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      transition={{ 
+                        duration: 0.5, 
+                        delay: 1.0 + index * 0.15 
+                      }}
+                      viewport={{ once: true }}
+                      whileHover={{ scale: 1.1, rotate: 5 }}
+                    />
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ 
+                        duration: 0.4, 
+                        delay: 1.1 + index * 0.15 
+                      }}
+                      viewport={{ once: true }}
+                    >
+                      <CardTitle className="text-lg">{story.name}</CardTitle>
+                      <CardDescription className="text-sm">{story.role}</CardDescription>
+                    </motion.div>
+                  </motion.div>
+                  <motion.blockquote 
+                    className="text-muted-foreground italic"
+                    initial={{ opacity: 0, y: 15 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ 
+                      duration: 0.5, 
+                      delay: 1.2 + index * 0.15 
+                    }}
+                    viewport={{ once: true }}
+                  >
+                    "{story.quote}"
+                  </motion.blockquote>
+                </CardHeader>
+                <CardContent>
+                  <motion.div 
+                    className="flex items-center justify-between"
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ 
+                      duration: 0.4, 
+                      delay: 1.4 + index * 0.15 
+                    }}
+                    viewport={{ once: true }}
+                  >
+                    <span className="text-sm text-muted-foreground">@ {story.employer}</span>
+                    <motion.div
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      <Button variant="ghost" size="sm">
+                        See full case study
+                      </Button>
+                    </motion.div>
+                  </motion.div>
+                </CardContent>
+              </Card>
+            </motion.div>
           ))}
         </div>
       </div>
