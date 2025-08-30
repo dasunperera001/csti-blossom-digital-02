@@ -1,4 +1,5 @@
 import { MapPin, Phone, Mail, Globe, Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
+import { motion } from "framer-motion";
 
 const FooterSection = () => {
   const currentYear = new Date().getFullYear();
@@ -29,24 +30,54 @@ const FooterSection = () => {
   ];
 
   return (
-    <footer className="bg-primary text-primary-foreground">
+    <motion.footer 
+      className="bg-primary text-primary-foreground"
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+      viewport={{ once: true }}
+    >
       {/* Main Footer Content */}
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
         <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-8">
           {/* Company Info */}
-          <div className="lg:col-span-1">
-            <div className="mb-6">
+          <motion.div 
+            className="lg:col-span-1"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+            viewport={{ once: true, margin: "-50px" }}
+          >
+            <motion.div 
+              className="mb-6"
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              viewport={{ once: true }}
+            >
               <h3 className="text-2xl font-bold mb-2">CSTI Bureau</h3>
               <p className="text-secondary text-sm font-medium">Consultancy & Training Institute</p>
-            </div>
+            </motion.div>
             
-            <p className="text-primary-foreground/80 mb-6 leading-relaxed">
+            <motion.p 
+              className="text-primary-foreground/80 mb-6 leading-relaxed"
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+              viewport={{ once: true }}
+            >
               Sri Lanka's premier consultancy and training bureau, dedicated to empowering businesses 
               with innovative solutions and strategic insights for sustainable growth.
-            </p>
+            </motion.p>
 
             {/* Contact Information */}
-            <div className="space-y-3">
+            <motion.div 
+              className="space-y-3"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.7 }}
+              viewport={{ once: true }}
+            >
               <div className="flex items-start space-x-3">
                 <MapPin className="h-5 w-5 text-secondary mt-0.5 flex-shrink-0" />
                 <div className="text-sm">
@@ -68,46 +99,79 @@ const FooterSection = () => {
               <div className="flex items-center space-x-3">
                 <Globe className="h-5 w-5 text-secondary flex-shrink-0" />
                 <span className="text-sm">www.cstibureau.lk</span>
-              </div>
-            </div>
-          </div>
+                </div>
+            </motion.div>
+          </motion.div>
 
           {/* Services */}
-          <div>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+            viewport={{ once: true, margin: "-50px" }}
+          >
             <h4 className="text-lg font-semibold mb-6 text-secondary">Our Services</h4>
             <ul className="space-y-3">
               {services.map((service, index) => (
-                <li key={index}>
+                <motion.li 
+                  key={index}
+                  initial={{ opacity: 0, x: -10 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ 
+                    duration: 0.3, 
+                    delay: 0.6 + index * 0.1 
+                  }}
+                  viewport={{ once: true }}
+                >
                   <a 
                     href="#" 
                     className="text-primary-foreground/80 hover:text-secondary transition-colors duration-300 text-sm"
                   >
                     {service}
                   </a>
-                </li>
+                </motion.li>
               ))}
             </ul>
-          </div>
+          </motion.div>
 
           {/* Quick Links */}
-          <div>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
+            viewport={{ once: true, margin: "-50px" }}
+          >
             <h4 className="text-lg font-semibold mb-6 text-secondary">Quick Links</h4>
             <ul className="space-y-3">
               {quickLinks.map((link, index) => (
-                <li key={index}>
+                <motion.li 
+                  key={index}
+                  initial={{ opacity: 0, x: -10 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ 
+                    duration: 0.3, 
+                    delay: 0.8 + index * 0.1 
+                  }}
+                  viewport={{ once: true }}
+                >
                   <a 
                     href="#" 
                     className="text-primary-foreground/80 hover:text-secondary transition-colors duration-300 text-sm"
                   >
                     {link}
                   </a>
-                </li>
+                </motion.li>
               ))}
             </ul>
-          </div>
+          </motion.div>
 
           {/* Newsletter & Social */}
-          <div>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.8, ease: "easeOut" }}
+            viewport={{ once: true, margin: "-50px" }}
+          >
             <h4 className="text-lg font-semibold mb-6 text-secondary">Stay Connected</h4>
             
             <p className="text-primary-foreground/80 text-sm mb-4 leading-relaxed">
@@ -147,53 +211,46 @@ const FooterSection = () => {
                 })}
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
 
       {/* Bottom Footer */}
-      <div className="border-primary-foreground/20">
+      <motion.div 
+        className="border-primary-foreground/20"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 1.0 }}
+        viewport={{ once: true }}
+      >
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-0">
           <div className="pt-8 pb-8 border-t border-primary-foreground/10">
             <div className="md:flex md:items-center md:justify-between">
-            <div className="text-sm text-primary-foreground/60">
-              <p>&copy; {currentYear} CSTI Bureau. All rights reserved.</p>
-            </div>
-            
-            <div className="mt-4 md:mt-0">
-              <div className="flex flex-wrap gap-6 text-sm">
-                <a href="#" className="text-primary-foreground/60 hover:text-secondary transition-colors duration-300">
-                  Privacy Policy
-                </a>
-                <a href="#" className="text-primary-foreground/60 hover:text-secondary transition-colors duration-300">
-                  Terms of Service
-                </a>
-                <a href="#" className="text-primary-foreground/60 hover:text-secondary transition-colors duration-300">
-                  Cookie Policy
-                </a>
-                <a href="#" className="text-primary-foreground/60 hover:text-secondary transition-colors duration-300">
-                  Sitemap
-                </a>
+              <div className="text-sm text-primary-foreground/60">
+                <p>&copy; {currentYear} CSTI Bureau. All rights reserved.</p>
+              </div>
+              
+              <div className="mt-4 md:mt-0">
+                <div className="flex flex-wrap gap-6 text-sm">
+                  <a href="#" className="text-primary-foreground/60 hover:text-secondary transition-colors duration-300">
+                    Privacy Policy
+                  </a>
+                  <a href="#" className="text-primary-foreground/60 hover:text-secondary transition-colors duration-300">
+                    Terms of Service
+                  </a>
+                  <a href="#" className="text-primary-foreground/60 hover:text-secondary transition-colors duration-300">
+                    Cookie Policy
+                  </a>
+                  <a href="#" className="text-primary-foreground/60 hover:text-secondary transition-colors duration-300">
+                    Sitemap
+                  </a>
+                </div>
               </div>
             </div>
           </div>
-          </div>
-
-          {/* Certifications */}
-          {/* <div className="mt-6 pt-6 border-t border-primary-foreground/10">
-            <div className="flex flex-wrap justify-center gap-6 text-xs text-primary-foreground/60">
-              <span>ISO 9001:2015 Certified</span>
-              <span>•</span>
-              <span>Registered Training Provider</span>
-              <span>•</span>
-              <span>Member of SLAMC</span>
-              <span>•</span>
-              <span>Licensed by Ministry of Education</span>
-            </div>
-          </div> */}
         </div>
-      </div>
-    </footer>
+      </motion.div>
+    </motion.footer>
   );
 };
 

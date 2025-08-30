@@ -37,11 +37,30 @@ const ContactFormSection = () => {
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-start">
-          <div>
-            <h2 className="text-4xl font-bold text-foreground mb-4">Request Job Quota</h2>
-            <p className="text-xl text-muted-foreground mb-8">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+            viewport={{ once: true, margin: "-50px" }}
+          >
+            <motion.h2 
+              className="text-4xl font-bold text-foreground mb-4"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+              viewport={{ once: true }}
+            >
+              Request Job Quota
+            </motion.h2>
+            <motion.p 
+              className="text-xl text-muted-foreground mb-8"
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.5, ease: "easeOut" }}
+              viewport={{ once: true }}
+            >
               Tell us about your hiring needs and we'll connect you with qualified candidates
-            </p>
+            </motion.p>
             
             {formSubmitted ? (
               <Card className="p-8 text-center bg-green-50 border-green-200">
@@ -50,8 +69,14 @@ const ContactFormSection = () => {
                 <p className="text-green-700">We'll contact you within 24 hours to discuss your requirements.</p>
               </Card>
             ) : (
-              <Card className="p-8">
-                <form onSubmit={handleFormSubmit} className="space-y-6">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.7 }}
+                viewport={{ once: true }}
+              >
+                <Card className="p-8">
+                  <form onSubmit={handleFormSubmit} className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <Label htmlFor="companyName">Company Name *</Label>
@@ -147,14 +172,27 @@ const ContactFormSection = () => {
                     Submit Request
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Button>
-                </form>
-              </Card>
+                  </form>
+                </Card>
+              </motion.div>
             )}
-          </div>
+          </motion.div>
           
-          <div className="space-y-8">
-            <Card className="p-6">
-              <h3 className="text-xl font-semibold mb-4">Contact Information</h3>
+          <motion.div 
+            className="space-y-8"
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+            viewport={{ once: true, margin: "-50px" }}
+          >
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.8 }}
+              viewport={{ once: true }}
+            >
+              <Card className="p-6">
+                <h3 className="text-xl font-semibold mb-4">Contact Information</h3>
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
                   <MapPin className="h-5 w-5 text-primary flex-shrink-0" />
@@ -179,12 +217,19 @@ const ContactFormSection = () => {
                     <p className="text-sm text-muted-foreground">24/7 support</p>
                   </div>
                 </div>
-              </div>
-            </Card>
+                </div>
+              </Card>
+            </motion.div>
             
             {/* Updated: Office Location now shows an embedded Google Map with modern responsive UI */}
-            <Card className="p-6">
-              <h3 className="text-xl font-semibold mb-4">Office Location</h3>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 1.0 }}
+              viewport={{ once: true }}
+            >
+              <Card className="p-6">
+                <h3 className="text-xl font-semibold mb-4">Office Location</h3>
               <div className="rounded-lg overflow-hidden shadow-md">
                 <div className="aspect-video w-full">
                   <iframe
@@ -213,9 +258,10 @@ const ContactFormSection = () => {
                     Open in Google Maps
                   </a>
                 </div>
-              </div>
-            </Card>
-          </div>
+                </div>
+              </Card>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
     </motion.section>

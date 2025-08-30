@@ -34,34 +34,125 @@ const NewsSection = () => {
       viewport={{ once: true }}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-foreground mb-4">Latest News & Announcements</h2>
-          <p className="text-xl text-muted-foreground">Stay updated with our latest developments</p>
-        </div>
+        <motion.div 
+          className="text-center mb-12"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+          viewport={{ once: true, margin: "-50px" }}
+        >
+          <motion.h2 
+            className="text-4xl font-bold text-foreground mb-4"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+            viewport={{ once: true }}
+          >
+            Latest News & Announcements
+          </motion.h2>
+          <motion.p 
+            className="text-xl text-muted-foreground"
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.5, ease: "easeOut" }}
+            viewport={{ once: true }}
+          >
+            Stay updated with our latest developments
+          </motion.p>
+        </motion.div>
         
         <div className="grid md:grid-cols-3 gap-8">
           {news.map((article, index) => (
-            <Card key={index} className="hover-lift">
-              <div className="aspect-video overflow-hidden rounded-t-lg">
-                <img 
-                  src={article.image} 
-                  alt={article.title}
-                  className="w-full h-full object-cover"
-                  loading="lazy"
-                />
-              </div>
-              <CardHeader>
-                <div className="text-sm text-muted-foreground mb-2">{article.date}</div>
-                <CardTitle className="text-lg leading-tight">{article.title}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="mb-4">{article.excerpt}</CardDescription>
-                <Button variant="ghost" size="sm">
-                  Read more
-                  <ArrowRight className="h-4 w-4 ml-2" />
-                </Button>
-              </CardContent>
-            </Card>
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 30, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ 
+                duration: 0.5, 
+                delay: 0.6 + index * 0.15, 
+                ease: "easeOut" 
+              }}
+              viewport={{ once: true, margin: "-50px" }}
+              whileHover={{ 
+                y: -8, 
+                scale: 1.02,
+                transition: { duration: 0.3 }
+              }}
+            >
+              <Card className="hover-lift h-full">
+                <motion.div 
+                  className="aspect-video overflow-hidden rounded-t-lg"
+                  initial={{ opacity: 0, scale: 1.1 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ 
+                    duration: 0.6, 
+                    delay: 0.8 + index * 0.15 
+                  }}
+                  viewport={{ once: true }}
+                >
+                  <img 
+                    src={article.image} 
+                    alt={article.title}
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                </motion.div>
+                <CardHeader>
+                  <motion.div 
+                    className="text-sm text-muted-foreground mb-2"
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ 
+                      duration: 0.4, 
+                      delay: 1.0 + index * 0.15 
+                    }}
+                    viewport={{ once: true }}
+                  >
+                    {article.date}
+                  </motion.div>
+                  <motion.div
+                    initial={{ opacity: 0, y: 15 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ 
+                      duration: 0.5, 
+                      delay: 1.1 + index * 0.15 
+                    }}
+                    viewport={{ once: true }}
+                  >
+                    <CardTitle className="text-lg leading-tight">{article.title}</CardTitle>
+                  </motion.div>
+                </CardHeader>
+                <CardContent>
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ 
+                      duration: 0.4, 
+                      delay: 1.2 + index * 0.15 
+                    }}
+                    viewport={{ once: true }}
+                  >
+                    <CardDescription className="mb-4">{article.excerpt}</CardDescription>
+                  </motion.div>
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ 
+                      duration: 0.3, 
+                      delay: 1.4 + index * 0.15 
+                    }}
+                    viewport={{ once: true }}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <Button variant="ghost" size="sm">
+                      Read more
+                      <ArrowRight className="h-4 w-4 ml-2" />
+                    </Button>
+                  </motion.div>
+                </CardContent>
+              </Card>
+            </motion.div>
           ))}
         </div>
       </div>

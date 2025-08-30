@@ -75,9 +75,9 @@ const HeaderSection = () => {
       {/* Topbar - Static, not sticky */}
       <motion.div 
         className="bg-gray-100 backdrop-blur-sm border-b border-gray-100 text-sm"
-        initial={{ y: -50, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.4, ease: "easeOut" }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-2">
           <div className="flex items-center justify-between">
@@ -122,9 +122,9 @@ const HeaderSection = () => {
             ? 'bg-background/95 backdrop-blur-xl border-b border-border shadow-lg' 
             : 'bg-background/95 backdrop-blur-xl border-b border-border shadow-sm'
         }`}
-        initial={{ y: -100, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className={`flex items-center justify-between transition-all duration-300 ${
